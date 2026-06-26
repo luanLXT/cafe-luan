@@ -2,7 +2,7 @@
   <div>
     <nav id="nav">
       <router-link to="/" id="logo-url">
-        <img src="/img/logo.lucoffe.jpeg" id="logo" />
+        <img :src="`${publicPath}img/logo.lucoffe.jpeg`" id="logo" />
       </router-link>
       <router-link to="/">Home</router-link> |
       <router-link to="/menu">Menu</router-link> |
@@ -13,6 +13,11 @@
 <script>
 export default {
   name: "NavBarComponent",
+  data() {
+    return {
+      publicPath: process.env.BASE_URL,
+    };
+  },
 };
 </script>
 <style scoped>

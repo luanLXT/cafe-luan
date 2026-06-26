@@ -5,7 +5,7 @@
       <div id="card-content" v-for="cafe in listaMenuCafes" :key="cafe.id">
         <div id="card-linha">
           <div class="foto-cafe">
-            <img :src="cafe.foto" alt="nome do café" />
+            <img :src="`${publicPath}${cafe.foto.replace(/^\//, '')}`" alt="nome do café" />
             <div class="card-coluna">
               <p id="nome-content">{{ cafe.nome }}</p>
               <p id="preco-content">R$ {{ cafe.valor }},00</p>
@@ -24,6 +24,7 @@ export default {
   data() {
     return {
       listaMenuCafes: [],
+      publicPath: process.env.BASE_URL,
     };
   },
   methods: {

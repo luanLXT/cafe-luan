@@ -11,7 +11,7 @@
         <p id="nome-cafe-content">
           {{ cafe && cafe.nome ? cafe.nome : "-" }}
         </p>
-        <img id="foto-content" :src="cafe && cafe.foto ? cafe.foto : ''" />
+        <img id="foto-content" :src="fotoCafeCompleta" />
       </div>
       <div class="inputs" id="form-pedido">
         <label for="nome-cliente">Nome</label>
@@ -112,12 +112,19 @@ export default {
       tamanhoSelecionado: "",
       listaAcompanhamentosSelecionados: [],
       listaAdicionaisSelecionados: [],
+      publicPath: process.env.BASE_URL,
       alerta: {
         visivel: false,
         tipo: "info",
         mensagem: "",
       },
     };
+  },
+  computed: {
+    fotoCafeCompleta() {
+      if (!this.cafe || !this.cafe.foto) return "";
+      return `${this.publicPath}${this.cafe.foto.replace(/^\//, "")}`;
+    },
   },
   methods: {
     mostrarAlerta(tipo, mensagem) {

@@ -1,12 +1,17 @@
 <template>
   <div id="main-banner">
-    <img id="banner-img" src="/img/Banner.jpeg" alt="banner" />
-    <h1>Vem tomar café com o Luan</h1>
+    <img id="banner-img" :src="`${publicPath}img/Banner.jpeg`" alt="banner" />
+    <h1>VEM TOMAR CAFÉ BEM BOM</h1>
   </div>
 </template>
 <script>
 export default {
   name: "BannerComponent",
+  data() {
+    return {
+      publicPath: process.env.BASE_URL,
+    };
+  },
 };
 </script>
 <style scoped>

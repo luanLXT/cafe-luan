@@ -66,7 +66,7 @@
       <div id="div-acoes">
         <img
           @click="deletarPedido(pedido.id)"
-          src="/img/lixeira.svg"
+          :src="`${publicPath}img/lixeira.svg`"
           width="35px"
           height="35px"
         />
@@ -86,6 +86,7 @@ export default {
     return {
       listaPedidosRealizados: [],
       listaStatusPedido: [],
+      publicPath: process.env.BASE_URL,
       alerta: {
         visivel: false,
         tipo: "info",
